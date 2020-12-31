@@ -11,12 +11,16 @@ Rails.application.routes.draw do
     devise_for :builders, controllers: { sessions: :sessions },
                        path_names: { sign_in: :login }
     resources :users
-    resources :services
+    resources :services do 
+      collection do
+        get :service_type_list
+      end
+    end
     resources :builders
-	resources :job_applications
-	resources :jobs
-	resources :profiles
-	resources :projects
+  	resources :job_applications
+  	resources :jobs
+  	resources :profiles
+  	resources :projects
   end
   devise_for :admins, path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'signup' }
 
