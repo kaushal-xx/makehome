@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_31_061517) do
+ActiveRecord::Schema.define(version: 2021_01_05_074122) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -89,6 +89,7 @@ ActiveRecord::Schema.define(version: 2020_12_31_061517) do
     t.string "skill_service_provider"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "builder_id"
     t.index ["service_id"], name: "index_profiles_on_service_id"
   end
 
@@ -114,6 +115,7 @@ ActiveRecord::Schema.define(version: 2020_12_31_061517) do
     t.string "state"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "approved", default: false
     t.index ["builder_id"], name: "index_projects_on_builder_id"
   end
 

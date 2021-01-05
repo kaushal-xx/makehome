@@ -7,4 +7,9 @@ class Service < ApplicationRecord
 
 	has_many :service_type_mappings
 	has_many :service_types, through: :service_type_mappings
+
+	has_one :profile
+
+  #=============== Nested attributes =============================
+  accepts_nested_attributes_for :profile
 end
