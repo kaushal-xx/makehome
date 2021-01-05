@@ -1,6 +1,10 @@
 require 'securerandom'
 class ServicesController < ApplicationController
-  before_action :authenticate_service!, except: [:create]
+  before_action :authenticate_service!, except: [:create, :service_type_list]
+
+  def service_type_list
+    @service_types = ServiceType.all
+  end
 
   def create
     @service = Service.find_by_firebase_token service_params[:firebase_token]
@@ -28,20 +32,22 @@ class ServicesController < ApplicationController
   end
 
   def show
+    @service = current_service
   end
 
   def update
-   if current_service.update(service_params)
+    @service = current_service
+   if @service.update(service_params)
      render :show
    else
-     render json: { errors: current_service.errors }, status: :unprocessable_entity
+     render json: { errors: @service.errors }, status: :unprocessable_entity
    end
   end
 
   private
 
   def service_params
-    params.require(:service).permit(:email, :phone_number, :architect, :carpenter, :electric_fitter, :fabricator, :interior_designer, :labour, :marble_finisher, :pop_designer, :painter, :plot, :plumber, :rajmishtri, :tile_fitter, :firebase_token, :status, :reason)
+    params.require(:service).permit(:email, :phone_number, :architect, :carpenter, :electric_fitter, :fabricator, :interior_designer, :labour, :marble_finisher, :pop_designer, :painter, :plot, :plumber, :rajmishtri, :tile_fitter, :firebase_token, :status, :reason, service_type_ids: [])
   end
 
 end

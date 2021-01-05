@@ -28,13 +28,15 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user = current_user
   end
 
   def update
-   if current_user.update(user_params)
+    @user = current_user
+   if @user.update(user_params)
      render :show
    else
-     render json: { errors: current_user.errors }, status: :unprocessable_entity
+     render json: { errors: @user.errors }, status: :unprocessable_entity
    end
   end
 

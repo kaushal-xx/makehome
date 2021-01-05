@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   respond_to :json, :html
 
   before_action :authenticate_user
-  before_action :configure_permitted_parameters, if: :devise_controller?
+  # before_action :configure_permitted_parameters, if: :devise_controller?
 
   def authenticate_user!(options = {})
     head :unauthorized unless signed_user_in?
@@ -67,12 +67,12 @@ class ApplicationController < ActionController::Base
 
 
     def authenticate_user
-      if request.headers['authorization_user'].present?
-        @current_user_id = User.find_by_authentication_token(request.headers['authorization_user']).try(:id)
-      elsif request.headers['authorization_service'].present?
-      	@current_service_id = Service.find_by_authentication_token(request.headers['authorization_service']).try(:id)
-      elsif request.headers['authorization_builder'].present?
-      	@current_builder_id = Builder.find_by_authentication_token(request.headers['authorization_builder']).try(:id)
+      if request.headers['HTTP_AUTHORIZATION_USER'].present?
+        @current_user_id = User.find_by_authentication_token(request.headers['HTTP_AUTHORIZATION_USER']).try(:id)
+      elsif request.headers['HTTP_AUTHORIZATION_SERVICE'].present?
+      	@current_service_id = Service.find_by_authentication_token(request.headers['HTTP_AUTHORIZATION_SERVICE']).try(:id)
+      elsif request.headers['HTTP_AUTHORIZATION_BUILDER'].present?
+      	@current_builder_id = Builder.find_by_authentication_token(request.headers['HTTP_AUTHORIZATION_BUILDER']).try(:id)
       end
     end
 end

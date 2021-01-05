@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_20_082710) do
+ActiveRecord::Schema.define(version: 2020_12_31_061517) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 2020_12_20_082710) do
     t.string "authentication_token", limit: 30
     t.string "role", limit: 30
     t.string "phone_number", limit: 30
+    t.boolean "approved", default: false
     t.index ["authentication_token"], name: "index_builders_on_authentication_token", unique: true
   end
 
@@ -116,6 +117,23 @@ ActiveRecord::Schema.define(version: 2020_12_20_082710) do
     t.index ["builder_id"], name: "index_projects_on_builder_id"
   end
 
+  create_table "service_type_mappings", force: :cascade do |t|
+    t.bigint "service_id"
+    t.bigint "service_type_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["service_id"], name: "index_service_type_mappings_on_service_id"
+    t.index ["service_type_id"], name: "index_service_type_mappings_on_service_type_id"
+  end
+
+  create_table "service_types", force: :cascade do |t|
+    t.string "name"
+    t.boolean "active"
+    t.text "image"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "services", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -143,6 +161,7 @@ ActiveRecord::Schema.define(version: 2020_12_20_082710) do
     t.string "authentication_token", limit: 30
     t.string "role", limit: 30
     t.string "phone_number", limit: 30
+    t.boolean "approved", default: false
     t.index ["authentication_token"], name: "index_services_on_authentication_token", unique: true
   end
 
@@ -158,6 +177,7 @@ ActiveRecord::Schema.define(version: 2020_12_20_082710) do
     t.string "authentication_token", limit: 30
     t.string "role", limit: 30
     t.string "phone_number", limit: 30
+    t.boolean "approved", default: false
     t.index ["authentication_token"], name: "index_users_on_authentication_token", unique: true
   end
 

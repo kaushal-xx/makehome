@@ -28,13 +28,15 @@ class BuildersController < ApplicationController
   end
 
   def show
+    @builder = current_builder
   end
 
   def update
+    @builder = current_builder
    if current_builder.update(builder_params)
      render :show
    else
-     render json: { errors: current_builder.errors }, status: :unprocessable_entity
+     render json: { errors: @builder.errors }, status: :unprocessable_entity
    end
   end
 
