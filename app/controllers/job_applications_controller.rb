@@ -4,6 +4,7 @@ class JobApplicationsController < ApplicationController
   # GET /job_applications
   # GET /job_applications.json
   def index
+    page = params[:page] || 1
     @job_applications = JobApplication.all.page(page).per(15)
   end
 

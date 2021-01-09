@@ -43,7 +43,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :phone_number, :firebase_token)
+    params.require(:user).permit(:email, :phone_number, :firebase_token, :name, :profile_image)
   end
 
 end

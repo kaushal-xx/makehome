@@ -4,6 +4,7 @@ class ProfilesController < ApplicationController
   # GET /profiles
   # GET /profiles.json
   def index
+    page = params[:page] || 1
     @profiles = Profile.all.page(page).per(15)
   end
 

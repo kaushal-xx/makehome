@@ -1,2 +1,2 @@
-json.extract! user, :id, :email, :firebase_token, :created_at, :updated_at, :authentication_token, :role, :phone_number, :approved
+json.extract! user, :id, :email, :firebase_token, :created_at, :updated_at, :authentication_token, :role, :phone_number, :approved, :name, :profile_image
 json.url project_url(user, format: :json)

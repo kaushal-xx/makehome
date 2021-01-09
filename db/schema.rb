@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_05_074122) do
+ActiveRecord::Schema.define(version: 2021_01_09_120651) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -134,6 +134,7 @@ ActiveRecord::Schema.define(version: 2021_01_05_074122) do
     t.text "image"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "coming_soon", default: false
   end
 
   create_table "services", force: :cascade do |t|
@@ -180,6 +181,8 @@ ActiveRecord::Schema.define(version: 2021_01_05_074122) do
     t.string "role", limit: 30
     t.string "phone_number", limit: 30
     t.boolean "approved", default: false
+    t.string "name"
+    t.text "profile_image"
     t.index ["authentication_token"], name: "index_users_on_authentication_token", unique: true
   end
 
