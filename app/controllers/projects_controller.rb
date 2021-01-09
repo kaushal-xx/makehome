@@ -4,6 +4,7 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
   def index
+    page = params[:page] || 1
     @projects = Project.all.page(page).per(15)
   end
 
