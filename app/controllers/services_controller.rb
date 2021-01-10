@@ -1,6 +1,6 @@
 require 'securerandom'
 class ServicesController < ApplicationController
-  before_action :authenticate_service!, except: [:create, :service_type_list]
+  before_action :authenticate_service!, except: [:create, :service_type_list, :index]
 
   def service_type_list
     @service_types = ServiceType.all
@@ -21,14 +21,7 @@ class ServicesController < ApplicationController
   end
 
   def index
-    page = params[:page]||1
-    if current_service.role == 'admin'
-      if params[:role].present?
-        @services = Service.where(role: params[:role]).page(page).per(15)
-      else
-        @services = Service.all.page(page).per(15)
-      end
-    end
+    @services = Service.search(params)
   end
 
   def show
