@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @slider.name %>
+</p>
+
+<p>
+  <strong>Slider type:</strong>
+  <%= @slider.slider_type %>
+</p>
+
+<p>
+  <strong>Visibility:</strong>
+  <%= @slider.visibility %>
+</p>
+
+<%= link_to 'Edit', edit_slider_path(@slider) %> |
+<%= link_to 'Back', sliders_path %>

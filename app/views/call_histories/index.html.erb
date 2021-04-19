@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Call Histories</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Caller name</th>
+      <th>Caller mobile</th>
+      <th>Username</th>
+      <th>User mobile</th>
+      <th>Date</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @call_histories.each do |call_history| %>
+      <tr>
+        <td><%= call_history.caller_name %></td>
+        <td><%= call_history.caller_mobile %></td>
+        <td><%= call_history.username %></td>
+        <td><%= call_history.user_mobile %></td>
+        <td><%= call_history.date %></td>
+        <td><%= link_to 'Show', call_history %></td>
+        <td><%= link_to 'Edit', edit_call_history_path(call_history) %></td>
+        <td><%= link_to 'Destroy', call_history, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Call History', new_call_history_path %>

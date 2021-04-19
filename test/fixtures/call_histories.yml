@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  caller_name: MyString
+  caller_mobile: MyString
+  username: MyString
+  user_mobile: MyString
+  date: 2021-04-19 12:01:32
+
+two:
+  caller_name: MyString
+  caller_mobile: MyString
+  username: MyString
+  user_mobile: MyString
+  date: 2021-04-19 12:01:32

@@ -1,0 +1,42 @@
+<%= form_with(model: call_history, local: true) do |form| %>
+  <% if call_history.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(call_history.errors.count, "error") %> prohibited this call_history from being saved:</h2>
+
+      <ul>
+        <% call_history.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :caller_name %>
+    <%= form.text_field :caller_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :caller_mobile %>
+    <%= form.text_field :caller_mobile %>
+  </div>
+
+  <div class="field">
+    <%= form.label :username %>
+    <%= form.text_field :username %>
+  </div>
+
+  <div class="field">
+    <%= form.label :user_mobile %>
+    <%= form.text_field :user_mobile %>
+  </div>
+
+  <div class="field">
+    <%= form.label :date %>
+    <%= form.datetime_select :date %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

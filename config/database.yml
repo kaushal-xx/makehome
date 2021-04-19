@@ -6,15 +6,18 @@
 #
 default: &default
   adapter: postgresql
-  timeout: 5000
-  host: localhost
-  port: 5432
-  pool: 5
   encoding: unicode
+  pool: 5
+  username: postgres
+  password: root
 
 development:
   <<: *default
   database: makehome_development
+  host: localhost
+  adapter: postgresql   
+  enconding: unicode
+  pool: 25
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".

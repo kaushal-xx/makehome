@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_09_120651) do
+ActiveRecord::Schema.define(version: 2021_04_19_071208) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,35 @@ ActiveRecord::Schema.define(version: 2021_01_09_120651) do
     t.string "phone_number", limit: 30
     t.boolean "approved", default: false
     t.index ["authentication_token"], name: "index_builders_on_authentication_token", unique: true
+  end
+
+  create_table "call_histories", force: :cascade do |t|
+    t.string "caller_name"
+    t.string "caller_mobile"
+    t.string "username"
+    t.string "user_mobile"
+    t.datetime "date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "enquiries", force: :cascade do |t|
+    t.string "name"
+    t.string "mobile"
+    t.string "email"
+    t.text "message"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "images", force: :cascade do |t|
+    t.string "name"
+    t.string "image_type"
+    t.string "image_url"
+    t.boolean "visibility"
+    t.integer "slider_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "job_applications", force: :cascade do |t|
@@ -135,6 +164,7 @@ ActiveRecord::Schema.define(version: 2021_01_09_120651) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "coming_soon", default: false
+    t.float "pride"
   end
 
   create_table "services", force: :cascade do |t|
@@ -166,6 +196,14 @@ ActiveRecord::Schema.define(version: 2021_01_09_120651) do
     t.string "phone_number", limit: 30
     t.boolean "approved", default: false
     t.index ["authentication_token"], name: "index_services_on_authentication_token", unique: true
+  end
+
+  create_table "sliders", force: :cascade do |t|
+    t.string "name"
+    t.string "slider_type"
+    t.boolean "visibility"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|

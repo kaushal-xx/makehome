@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Caller name:</strong>
+  <%= @call_history.caller_name %>
+</p>
+
+<p>
+  <strong>Caller mobile:</strong>
+  <%= @call_history.caller_mobile %>
+</p>
+
+<p>
+  <strong>Username:</strong>
+  <%= @call_history.username %>
+</p>
+
+<p>
+  <strong>User mobile:</strong>
+  <%= @call_history.user_mobile %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @call_history.date %>
+</p>
+
+<%= link_to 'Edit', edit_call_history_path(@call_history) %> |
+<%= link_to 'Back', call_histories_path %>

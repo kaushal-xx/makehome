@@ -1,0 +1,2 @@
+class CallHistory < ApplicationRecord
+end
