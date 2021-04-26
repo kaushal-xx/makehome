@@ -10,6 +10,7 @@ class Slider < ApplicationRecord
     search_params << "name = #{params[:name]}" if params[:name].present?
     search_params << "slider_type = #{params[:slider_type]}" if params[:slider_type].present?
     search_params << "visibility = #{params[:visibility]}" if params[:visibility].present?
+    search_params << "service_type_id = #{params[:service_type_id]}" if params[:service_type_id].present?
     search_params = search_params.join(' and ')
     Slider.where(search_params).distinct.page(page).per(15)
   end

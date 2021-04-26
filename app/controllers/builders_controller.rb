@@ -43,7 +43,7 @@ class BuildersController < ApplicationController
   private
 
   def builder_params
-    params.require(:builder).permit(:email, :phone_number, :firebase_token, :status, :reason, profile_attributes: [:service_id, :builder_id, :status, :reason, :aadhar_back_url, :aadhar_front_url, :aadhar_no, :builder_state, :city, :country, :email_id, :mobile_no, :occupation, :other_user_name, :permanent_address, :pincode, :profile_pic, :user_type, :skill_service_provider])
+    params.require(:builder).permit(:name, :email, :phone_number, :firebase_token, :status, :reason, profile_attributes: [:service_id, :builder_id, :status, :reason, :aadhar_back_url, :aadhar_front_url, :aadhar_no, :builder_state, :city, :country, :email_id, :mobile_no, :occupation, :other_user_name, :permanent_address, :pincode, :profile_pic, :user_type, :skill_service_provider])
   end
 
 end

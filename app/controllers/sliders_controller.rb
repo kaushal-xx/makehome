@@ -69,7 +69,7 @@ class SlidersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def slider_params
-      params.require(:slider).permit(:name, :slider_type, :visibility,
+      params.require(:slider).permit(:name, :slider_type, :visibility, :service_type_id,
       images_attributes:[:id, :_destroy, :name, :image_type, :image_url, :visibility])
     end
 end

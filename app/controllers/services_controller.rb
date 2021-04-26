@@ -40,7 +40,7 @@ class ServicesController < ApplicationController
   private
 
   def service_params
-    params.require(:service).permit(:email, :phone_number, :architect, :carpenter, :electric_fitter, :fabricator, :interior_designer, :labour, :marble_finisher, :pop_designer, :painter, :plot, :plumber, :rajmishtri, :tile_fitter, :firebase_token, :status, :reason, service_type_ids: [], profile_attributes: [:service_id, :builder_id, :status, :reason, :aadhar_back_url, :aadhar_front_url, :aadhar_no, :builder_state, :city, :country, :email_id, :mobile_no, :occupation, :other_user_name, :permanent_address, :pincode, :profile_pic, :user_type, :skill_service_provider])
+    params.require(:service).permit(:name, :email, :phone_number, :architect, :carpenter, :electric_fitter, :fabricator, :interior_designer, :labour, :marble_finisher, :pop_designer, :painter, :plot, :plumber, :rajmishtri, :tile_fitter, :firebase_token, :status, :reason, service_type_ids: [], profile_attributes: [:name, :service_id, :builder_id, :status, :reason, :aadhar_back_url, :aadhar_front_url, :aadhar_no, :builder_state, :city, :country, :email_id, :mobile_no, :occupation, :other_user_name, :permanent_address, :pincode, :profile_pic, :user_type, :skill_service_provider])
   end
 
 end
