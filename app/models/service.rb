@@ -9,6 +9,7 @@ class Service < ApplicationRecord
 	has_many :service_types, through: :service_type_mappings
 
 	has_one :profile
+  has_one :slider
 
   #=============== Nested attributes =============================
   accepts_nested_attributes_for :profile
@@ -24,6 +25,7 @@ class Service < ApplicationRecord
     search_params << "service_type_mappings.service_type_id = #{params[:service_type_id]}" if params[:service_type_id].present?
     search_params << "profiles.state = #{params[:state]}" if params[:state].present?
     search_params << "profiles.city = #{params[:city]}" if params[:city].present?
+    search_params << "profiles.current_address like %#{params[:current_address]}%" if params[:current_address].present?
     search_params = search_params.join(' and ')
     if params[:service_type_id].present?
       Service.joins(:service_type_mappings).where(search_params).where(search_status).distinct.page(page).per(15)

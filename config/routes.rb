@@ -19,6 +19,9 @@ Rails.application.routes.draw do
       collection do
         get :service_type_list
       end
+      member do 
+        post :upload_images
+      end
     end
     resources :builders
   	resources :job_applications

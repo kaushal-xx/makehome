@@ -1,0 +1,1 @@
+json.partial! "services/service", service: current_service.reload

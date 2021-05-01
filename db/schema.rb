@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_26_034951) do
+ActiveRecord::Schema.define(version: 2021_05_01_151850) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -122,6 +122,7 @@ ActiveRecord::Schema.define(version: 2021_04_26_034951) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "builder_id"
     t.string "name"
+    t.text "current_address"
     t.index ["service_id"], name: "index_profiles_on_service_id"
   end
 
@@ -199,6 +200,7 @@ ActiveRecord::Schema.define(version: 2021_04_26_034951) do
     t.string "phone_number", limit: 30
     t.boolean "approved", default: false
     t.string "name"
+    t.text "work_description"
     t.index ["authentication_token"], name: "index_services_on_authentication_token", unique: true
   end
 
@@ -209,6 +211,7 @@ ActiveRecord::Schema.define(version: 2021_04_26_034951) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "service_type_id"
+    t.integer "service_id"
   end
 
   create_table "users", force: :cascade do |t|

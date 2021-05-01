@@ -1,5 +1,6 @@
 class Slider < ApplicationRecord
 	has_many :images
+	belongs_to :service, optional: true
 	accepts_nested_attributes_for :images, :allow_destroy => true
 
   def self.search(params = {})
@@ -11,6 +12,7 @@ class Slider < ApplicationRecord
     search_params << "slider_type = #{params[:slider_type]}" if params[:slider_type].present?
     search_params << "visibility = #{params[:visibility]}" if params[:visibility].present?
     search_params << "service_type_id = #{params[:service_type_id]}" if params[:service_type_id].present?
+    search_params << "service_id = #{params[:service_id]}" if params[:service_id].present?
     search_params = search_params.join(' and ')
     Slider.where(search_params).distinct.page(page).per(15)
   end
