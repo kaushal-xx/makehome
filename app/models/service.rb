@@ -7,6 +7,7 @@ class Service < ApplicationRecord
 
 	has_many :service_type_mappings
 	has_many :service_types, through: :service_type_mappings
+  has_many :feedbacks
 
 	has_one :profile
   has_one :slider

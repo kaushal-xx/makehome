@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
 
-  resources :images
-  resources :sliders
-  resources :enquiries
-  resources :call_histories
   root 'rails_admin/main#dashboard'
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
@@ -32,6 +28,7 @@ Rails.application.routes.draw do
     resources :sliders
     resources :enquiries
     resources :call_histories
+    resources :feedbacks
   end
   devise_for :admins, path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'signup' }
 
